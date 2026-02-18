@@ -10,14 +10,18 @@ let tasks = [
 ];
 
 app.get('/', (req, res) => {
-  res.json({ message: "DevOps Task Manager API is running..." });
+  res.json({ message: "DevOps Task Manager API is running (Lab 1)" });
 });
 
 app.get('/tasks', (req, res) => {
   res.json(tasks);
 });
 
-app.post('/tasks', (req, res) => {
+app.post('/tasks', (req, res) => {Stack(
+  children: [
+    
+  ]
+)
   const newTask = { id: tasks.length+1, title: req.body.title, completed: false };
   tasks.push(newTask);
   res.status(201).json(newTask);
