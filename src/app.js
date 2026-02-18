@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
+
 app.use(express.json());
 
 let tasks = [
-  { id: 1, title: "Initial task", completed: true },
-  { id: 2, title: "Install Git and Node.js", "completed": true },
-  { id: 2, title: "Learn DevOps basics", completed: false }
-  
+  { id: 1, title: 'Learn Git', completed: false },
+  { id: 2, title: 'Setup DevOps', completed: true },
+  { id: 3, title: 'Practice CI/CD', completed: false }
 ];
 
 app.get('/', (req, res) => {
@@ -17,14 +17,14 @@ app.get('/tasks', (req, res) => {
   res.json(tasks);
 });
 
-app.post('/tasks', (req, res) => {Stack(
-  children: [
-    
-  ]
-)
-  const newTask = { id: tasks.length+1, title: req.body.title, completed: false };
+app.post('/tasks', (req, res) => {
+  const newTask = { 
+    id: tasks.length + 1, 
+    title: req.body.title, 
+    completed: false 
+  };
   tasks.push(newTask);
   res.status(201).json(newTask);
 });
 
-app.listen(3000, ()=> console.log("API running on port 3000"));
+app.listen(3000, () => console.log("API running on port 3000"));
