@@ -3,28 +3,13 @@ const app = express();
 
 app.use(express.json());
 
-let tasks = [
-  { id: 1, title: 'Learn Git', completed: false },
-  { id: 2, title: 'Setup DevOps', completed: true },
-  { id: 3, title: 'Practice CI/CD', completed: false }
-];
+const tasksRouter = require('./routes/tasks');
 
 app.get('/', (req, res) => {
-  res.json({ message: "DevOps Task Manager API is running" });
+  res.json({ message: "DevOps Task Manager API running (Lab2)" });
 });
 
-app.get('/tasks', (req, res) => {
-  res.json(tasks);
-});
+app.use('/tasks', tasksRouter);
 
-app.post('/tasks', (req, res) => {
-  const newTask = { 
-    id: tasks.length + 1, 
-    title: req.body.title, 
-    completed: false 
-  };
-  tasks.push(newTask);
-  res.status(201).json(newTask);
-});
 
 app.listen(3000, () => console.log("API running on port 3000"));
